@@ -1,0 +1,35 @@
+﻿@model CaractGeom
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <form action="~/Home/Somar">
+        <div class="form-group">
+            <b>Largura: </b>
+            <input name="width" id="width" type="text" />
+            <b>m</b>
+        </div>
+        <div class="form-group">
+            <b>Altura: </b>
+            <input name="height" id="height" type="text" />
+            <b>m</b>
+        </div>
+        <button class="btn btn-primary">Calcular</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <br/>
+        <div class="alert alert-danger" role="alert">Área = @Model.area.ToString("N3", System.Globalization.CultureInfo.InvariantCulture) m<sup>2</sup></div>
+        <div class="alert alert-warning" role="alert">Inércia = @Model.inercia.ToString("N3", System.Globalization.CultureInfo.InvariantCulture) m<sup>4</sup></div>
+        <div class="alert alert-success" role="alert">Ws = @Model.wS.ToString("N3", System.Globalization.CultureInfo.InvariantCulture) m<sup>3</sup></div>
+        <div class="alert alert-primary" role="alert">Wi = @Model.wI.ToString("N3", System.Globalization.CultureInfo.InvariantCulture) m<sup>3</sup></div>
+        <script>
+            document.getElementById("width").value = @Model.width.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            document.getElementById("height").value = @Model.height.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        </script>
+    }
+
+</div>
